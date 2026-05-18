@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Contoso Power · M365 Copilot Immersion</title>
+<style>
+:root{--radius:12px;--shadow:0 2px 8px rgba(0,0,0,.12);--brand:#0e7490;--brand2:#0E7490}
+@media(prefers-color-scheme:dark){:root{--bg:#0b1020;--panel:#0e1633;--panel2:#0a1228;--ink:#e2e8f0;--muted:#94a3b8;--border:#1e2d4a;--sidebar-a:#0e1530;--sidebar-b:#0a0f24;--accent:#3b82f6;--accent2:#60a5fa;--nav-hover:#172244;--badge-bg:#0a0f24;--code:#0d1535;--good:#22c55e;--warn:#f59e0b;--danger:#ef4444;--callout-info:#0e1c2c;--callout-warn:#2b220e;--callout-bad:#2b1414;--callout-good:#0e2418}}
+@media(prefers-color-scheme:light){:root{--bg:#f0f4f8;--panel:#ffffff;--panel2:#f0f6ff;--ink:#1a202c;--muted:#64748b;--border:#d1d9e6;--sidebar-a:#0e7490;--sidebar-b:#0f2545;--accent:#0e7490;--accent2:#0891b2;--nav-hover:#dbeafe;--badge-bg:#e8f0fe;--code:#1e2b55;--good:#16a34a;--warn:#d97706;--danger:#dc2626;--callout-info:#eff6ff;--callout-warn:#fffbeb;--callout-bad:#fef2f2;--callout-good:#f0fdf4}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:15px/1.55 "Inter","Segoe UI",system-ui,sans-serif;}
+a{color:var(--accent2);text-decoration:none}a:hover{text-decoration:underline}
+code,pre{font-family:"JetBrains Mono","Consolas",monospace;font-size:13px}
+.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+aside{background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));border-right:1px solid var(--border);padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;color:#e2e8f0}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.brand .logo{width:36px;height:36px;border-radius:9px;background:#0a3a4a;display:grid;place-items:center;font-weight:900;color:#fff;font-size:11px;letter-spacing:-.5px}
+.brand h1{font-size:15px;margin:0;letter-spacing:.2px;color:#fff}
+.tag{font-size:11px;color:#cbd5e1;margin-bottom:18px}
+nav h3{font-size:10px;letter-spacing:1.2px;color:#cbd5e1;text-transform:uppercase;margin:18px 0 8px}
+nav a{display:block;color:#e2e8f0;padding:8px 10px;border-radius:9px;font-size:14px;margin-bottom:2px;border:1px solid transparent}
+nav a:hover{background:rgba(255,255,255,.12);text-decoration:none;border-color:rgba(255,255,255,.2);color:#fff}
+main{padding:28px 40px 80px;max-width:1080px}
+.hero{background:radial-gradient(800px 320px at 0% 0%,rgba(14,116,144,.35),transparent 60%),radial-gradient(700px 280px at 100% 0%,rgba(8,145,178,.2),transparent 60%),var(--panel);border:1px solid var(--border);border-radius:18px;padding:30px;margin-bottom:24px}
+.hero .pill{display:inline-block;background:var(--badge-bg);border:1px solid var(--border);color:var(--accent2);font-size:11px;letter-spacing:1.2px;padding:4px 10px;border-radius:999px;margin-bottom:12px}
+.hero h2{font-size:30px;margin:0 0 8px;line-height:1.2}
+.hero p{color:var(--muted);margin:0;max-width:780px}
+.meta-row{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;color:var(--muted);font-size:13px}
+.meta-row span b{color:var(--ink)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:18px}.card .lead{color:var(--muted);margin:0 0 14px}
+.card h4{margin:18px 0 6px;font-size:15px;color:var(--accent2);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+ul{padding-left:20px;margin:8px 0}li{margin:4px 0}
+.sessionhead{display:flex;align-items:center;gap:14px;margin:36px 0 12px;padding-top:18px;border-top:2px solid var(--accent)}
+.sessionhead .num{width:60px;height:60px;border-radius:14px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff;text-align:center;line-height:1.1}
+.sessionhead h2{margin:0;font-size:24px}.sessionhead small{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin-top:3px}
+.modulehead{display:flex;align-items:center;gap:14px;margin:24px 0 12px}
+.modulehead .num{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;font-weight:800;font-size:18px;color:#fff}
+.modulehead h3{margin:0;font-size:20px}.modulehead small{display:block;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+.activity{border:1px solid var(--border);border-radius:12px;padding:18px;margin:14px 0;background:var(--panel);box-shadow:var(--shadow)}
+.activity .head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.activity .num{background:var(--accent);color:#fff;font-weight:800;font-size:12px;padding:3px 9px;border-radius:6px}
+.activity .time{color:var(--muted);font-size:12px}
+.activity .file{font-size:12px;color:var(--accent2);background:var(--badge-bg);border:1px solid var(--border);padding:3px 9px;border-radius:6px}
+.activity .persona{font-size:11px;color:#fff;background:var(--brand);border:1px solid var(--brand);padding:3px 9px;border-radius:6px;font-weight:600;letter-spacing:.3px}
+.activity h4{margin:0;font-size:16px;color:var(--ink);font-weight:600}
+.activity p{margin:6px 0;color:var(--muted);font-size:14px}
+.task-step{background:var(--panel2);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:8px;padding:12px 14px;margin:10px 0}
+.task-step .step-label{font-size:11px;letter-spacing:1px;color:var(--accent2);text-transform:uppercase;font-weight:700;margin-bottom:4px}
+.task-step .tool-badge{display:inline-block;background:rgba(14,116,144,.2);border:1px solid var(--accent);color:var(--accent2);font-size:11px;padding:2px 8px;border-radius:5px;margin-left:8px;vertical-align:middle}
+.prompt{position:relative;background:var(--code);border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:10px;padding:14px 60px 14px 16px;margin:10px 0;font-family:"JetBrains Mono","Consolas",monospace;font-size:13px;color:#c9d6ff;white-space:pre-wrap;line-height:1.6}
+.prompt .copy{position:absolute;top:8px;right:8px;background:#1a2552;color:#e2e8f0;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;transition:all .2s}
+.prompt .copy:hover{background:var(--accent);color:#fff}
+.prompt .copy.copied{background:var(--good);color:#0a0f24}
+.callout{border-left:4px solid var(--accent2);background:var(--callout-info);padding:12px 16px;margin:12px 0;border-radius:8px;color:var(--ink);font-size:14px}
+.callout.warn{border-color:var(--warn);background:var(--callout-warn)}
+.callout.good{border-color:var(--good);background:var(--callout-good)}
+.callout b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;margin-top:10px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--accent2);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.8px}
+td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
+.agenda{display:grid;grid-template-columns:90px 1fr 100px;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.agenda>div{padding:10px 14px;border-bottom:1px solid var(--border)}
+.agenda>div:nth-child(3n+1){color:var(--accent2);font-weight:700;background:var(--panel)}
+.agenda>div:nth-child(3n+3){color:var(--muted);text-align:right}
+.agenda>div:nth-last-child(-n+3){border-bottom:0}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:14px}
+.tool-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
+.tool-card .icon{font-size:22px;margin-bottom:6px}
+.tool-card h5{margin:0 0 4px;font-size:14px;color:var(--ink)}
+.tool-card p{margin:0;font-size:12px;color:var(--muted);line-height:1.5}
+/* Password screen */
+#lock{position:fixed;inset:0;background:radial-gradient(ellipse at 30% 40%,rgba(14,116,144,.5),transparent 60%),#0b1020;z-index:9999;display:flex;align-items:center;justify-content:center}
+.lock-box{background:var(--panel);border:1px solid var(--border);border-radius:20px;padding:40px 44px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lock-box .biglogo{width:56px;height:56px;border-radius:14px;background:var(--brand);display:grid;place-items:center;font-weight:900;font-size:11px;color:#fff;margin:0 auto 18px;text-align:center;line-height:1.1}
+.lock-box h2{margin:0 0 6px;font-size:22px}
+.lock-box p{color:var(--muted);font-size:14px;margin:0 0 22px}
+.lock-box input[type=password],.lock-box input[type=text]{width:100%;background:var(--badge-bg);border:1px solid var(--border);border-radius:10px;color:var(--ink);font-size:15px;padding:12px 16px;margin-bottom:12px;outline:none;font-family:inherit;transition:border-color .2s}
+.lock-box input:focus{border-color:var(--accent)}
+.lock-box button{width:100%;background:var(--brand);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;padding:13px;cursor:pointer;transition:background .2s}
+.lock-box button:hover{background:var(--accent)}
+.lock-box .err{color:var(--danger);font-size:13px;margin-top:8px;min-height:18px}
+.lock-box .conf{font-size:11px;color:var(--muted);margin-top:14px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}aside{position:static;height:auto}main{padding:16px 18px 60px}.hero h2{font-size:22px}}
+</style>
+</head>
+<body>
+
+<!-- PASSWORD GATE -->
+<div id="lock">
+  <div class="lock-box">
+    <div class="biglogo">CP</div>
+    <h2>Contoso Power · Copilot Immersion</h2>
+    <p>M365 Copilot Executive Immersion<br>Enter the session password to continue.</p>
+    <input type="password" id="pw" placeholder="Session password" autocomplete="off"/>
+    <button onclick="unlock()">Enter Workshop →</button>
+    <div class="err" id="err"></div>
+    <div class="conf">Confidential · Sample data only · Internal use</div>
+  </div>
+</div>
+
+<div class="layout" id="main" style="display:none">
+
+<!-- SIDEBAR -->
+<aside>
+  <div class="brand">
+    <div class="logo">CP</div>
+    <h1>Contoso Power<br>Copilot Immersion</h1>
+  </div>
+  <div class="tag">Two Sessions · M365 Copilot</div>
+  <nav>
+    <h3>Overview</h3>
+    <a href="#overview">About this session</a>
+    <a href="#tools">Tools used today</a>
+    <a href="#story">The story</a>
+    <h3>Session 1 · 20 May</h3>
+    <a href="#may-agenda">Agenda &amp; audience</a>
+    <a href="#may-ex1">Ex 1 · Ops Performance</a>
+    <a href="#may-ex2">Ex 2 · Procurement Minutes</a>
+    <a href="#may-ex3">Ex 3 · PMO Dashboard (Cowork)</a>
+    <a href="#may-ex4">Ex 4 · HR &amp; CoSec Drafting</a>
+    <h3>Session 2 · 10 June</h3>
+    <a href="#jun-agenda">Agenda &amp; audience</a>
+    <a href="#jun-ex1">Ex 1 · Researcher (Market)</a>
+    <a href="#jun-ex2">Ex 2 · Analyst (Financials)</a>
+    <a href="#jun-ex3">Ex 3 · Board Paper</a>
+    <a href="#jun-ex4">Ex 4 · Investor Microsite (Cowork)</a>
+    <h3>Resources</h3>
+    <a href="#files">Sample files</a>
+    <a href="#tips">Tips &amp; prompts</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main>
+
+<!-- HERO -->
+<section id="overview">
+<div class="hero">
+  <div class="pill">M365 COPILOT · IMMERSION EXPERIENCE</div>
+  <h2>Contoso Power · M365 Copilot Immersion</h2>
+  <p>A practical, role-based immersion for Contoso Power leaders across HR, PMO, Corporate Secretary, Procurement, Operations, Finance, Strategy, Legal, Business Development, and Corporate Communications. Each exercise is tagged by persona so you focus on what is relevant to your function.</p>
+  <div class="meta-row">
+    <span><b>Sessions</b> 20 May · 10 June</span>
+    <span><b>Duration</b> 1.5 hours each</span>
+    <span><b>Format</b> Demo + Guided hands-on</span>
+    <span><b>Licensing</b> Microsoft 365 Copilot</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>About this workshop</h3>
+  <p class="lead">Two short, focused immersions. Same platform, two different audiences and depths.</p>
+  <h4>What you will leave with</h4>
+  <ul>
+    <li>Hands-on experience with Copilot Chat, Researcher, Excel, Word, PowerPoint, and Cowork</li>
+    <li>One persona-specific artefact you built yourself — minutes, board paper, dashboard, or microsite</li>
+    <li>A clear mental model of where Copilot adds value across your function, and where it does not</li>
+  </ul>
+  <h4>What this workshop is not</h4>
+  <ul>
+    <li>It is <b>not</b> a feature walkthrough — every tool is demonstrated in a Contoso Power context</li>
+    <li>It is <b>not</b> connected to live Contoso Power systems — all data is sample / anonymised</li>
+    <li>It is <b>not</b> about replacing judgment — Copilot drafts, you decide</li>
+  </ul>
+</div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+<div class="modulehead"><div class="num">🛠</div><h3>Tools Used Today<small>M365 Copilot surfaces</small></h3></div>
+<div class="card">
+<div class="tools-grid">
+  <div class="tool-card"><div class="icon">💬</div><h5>Copilot Chat (Work)</h5><p>Your starting point. Grounded on Microsoft Graph — emails, files, meetings, Teams. Ask anything across your work data.</p></div>
+  <div class="tool-card"><div class="icon">🔍</div><h5>Researcher</h5><p>Deep multi-step web + work research. "Critique" mode auto-reviews sources for reliability before producing the final report.</p></div>
+  <div class="tool-card"><div class="icon">📊</div><h5>Excel Copilot</h5><p>Natural-language data analysis, KPI dashboards, RAG status tables, and Power BI-ready summaries — no formulas needed.</p></div>
+  <div class="tool-card"><div class="icon">📝</div><h5>Word Copilot</h5><p>Drafting: meeting minutes, board papers, press releases, HR policies — grounded on your uploaded files.</p></div>
+  <div class="tool-card"><div class="icon">🎨</div><h5>PowerPoint Copilot</h5><p>Create exec decks from a Word memo, refine storyline, generate visuals.</p></div>
+  <div class="tool-card"><div class="icon">📈</div><h5>Analyst (Agent)</h5><p>Drop in a dataset; ask complex questions — peer benchmarks, valuation, variance analysis. No setup required.</p></div>
+  <div class="tool-card"><div class="icon">🤝</div><h5>Teams Recap</h5><p>Auto-transcribe meetings, surface decisions and actions, then turn the recap into formal minutes in Word.</p></div>
+  <div class="tool-card"><div class="icon">👥</div><h5>Cowork</h5><p>Delegate multi-step tasks: "analyse the data, draft a one-pager, build an HTML status page". Cowork plans, checks in, then executes.</p></div>
+</div>
+<div class="callout warn" style="margin-top:16px">
+  <b>Data privacy reminder:</b> Do not paste real plant operational data, employee identifiable information, or commercially sensitive Contoso Power data during this session. Use the sample files provided. Microsoft 365 Copilot keeps prompts and data within your tenant boundary and is not used to train foundation models.
+</div>
+</div>
+</section>
+
+<!-- THE STORY -->
+<section id="story">
+<div class="modulehead"><div class="num">▶</div><h3>The Story<small>One workday at Contoso Power · From plant floor to boardroom</small></h3></div>
+<div class="card">
+<p class="lead">Across the two sessions, you follow one realistic 24-hour cycle at Contoso Power — from a morning plant performance review, through a procurement decision and a PMO dashboard refresh, into an afternoon board paper on the renewables strategy, and a press release for the CEO. Eight Copilot surfaces. One workday. Board-ready by close of business.</p>
+<table>
+  <tr><th>Persona</th><th>Pain point today</th><th>With Copilot</th></tr>
+  <tr><td><b>Ops-Thermal</b></td><td>3 hours per morning building plant performance reports manually from SCADA exports</td><td>Excel + Chat: 5-minute KPI summary, RAG-coded, Power BI-ready</td></tr>
+  <tr><td><b>Procurement</b></td><td>2-day delay turning evaluation meetings into formal minutes</td><td>Teams Recap + Word: minutes drafted while you walk back to your desk</td></tr>
+  <tr><td><b>PMO</b></td><td>Friday-night dashboard refresh from 12 different project trackers</td><td>Cowork builds an HTML status page from the master tracker — repeatable weekly</td></tr>
+  <tr><td><b>HR / CoSec</b></td><td>Policy memos and AGM resolutions sit in drafts for a week</td><td>Word: first draft in 5 minutes, you edit the judgment calls</td></tr>
+  <tr><td><b>Strategy / BD</b></td><td>One week for a peer scan and competitive landscape</td><td>Researcher: full deck-ready brief in 25 minutes, sources verified</td></tr>
+  <tr><td><b>CFO / Finance</b></td><td>Manual peer benchmarking across 6 listed IPPs in Excel</td><td>Analyst: peer table, EV/EBITDA, leverage commentary in one prompt</td></tr>
+  <tr><td><b>Legal / Comms / CEO</b></td><td>Press release and board memo drafted from scratch, multiple review cycles</td><td>Word + PowerPoint + Cowork: board paper → press release → exec deck → microsite, all linked</td></tr>
+</table>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SESSION 1 · 20 MAY -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="may-agenda">
+<div class="sessionhead">
+  <div class="num">20<br>MAY</div>
+  <h2>Session 1 · 20 May<small>Operational leaders · 1.5 hours</small></h2>
+</div>
+
+<div class="card">
+  <h3>Audience &amp; focus</h3>
+  <p class="lead">Practical, hands-on. Geared to operational decision-makers who run plants, projects, vendors, people and governance.</p>
+  <ul>
+    <li><b>Head of HR</b> — drafting, policy generation, employee comms</li>
+    <li><b>Head of Project Management Service (PMO)</b> — portfolio dashboards, status reporting</li>
+    <li><b>Corporate Secretary</b> — meeting minutes, resolutions, board governance documents</li>
+    <li><b>Procurement</b> — vendor evaluation, tender minutes, spend analysis</li>
+    <li><b>Operations (Thermal)</b> — plant performance reporting, Pro dashboard (Power BI) prep</li>
+  </ul>
+  <h4>Agenda</h4>
+  <div class="agenda">
+    <div>1</div><div><b>Welcome &amp; what is M365 Copilot today</b></div><div>10 min</div>
+    <div>2</div><div><b>Live demo — the story across one workday</b></div><div>15 min</div>
+    <div>3</div><div><b>Hands-on exercises (pick the one for your role; 2 if time)</b></div><div>55 min</div>
+    <div>4</div><div><b>Debrief, questions, what next</b></div><div>10 min</div>
+  </div>
+  <div class="callout"><b>Pick your exercise.</b> Each exercise is tagged with the persona it best serves. You can do another one if time allows.</div>
+</div>
+</section>
+
+<!-- MAY EX 1 -->
+<section id="may-ex1">
+<div class="modulehead"><div class="num">1</div><h3>Exercise 1 · Daily Ops Performance — Power BI-ready summary<small>Persona: Operations (Thermal) · PMO</small></h3></div>
+<div class="activity">
+  <div class="head">
+    <span class="persona">Ops-Thermal</span>
+    <span class="persona" style="background:#1e3a5f;border-color:#1e3a5f">PMO</span>
+    <span class="time">⏱ 15 minutes</span>
+    <span class="file">📎 01 ContosoPower_Thermal_Plant_Performance.xlsx</span>
+  </div>
+  <h4>Turn raw plant performance data into a board-quality KPI summary in 5 minutes</h4>
+  <p>You receive the daily plant performance dump every morning — 6 plants, 30 days, 13 columns. Today, Copilot does the analysis and produces a one-page Pro dashboard summary ready to drop into Power BI.</p>
+
+  <div class="task-step">
+    <div class="step-label">Step 1 · Open Excel and load the file <span class="tool-badge">Excel Copilot</span></div>
+    Download <b>01 ContosoPower_Thermal_Plant_Performance.xlsx</b>, open in Excel desktop, open Copilot pane.
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 2 · Ask Copilot to summarise <span class="tool-badge">Excel Copilot</span></div>
+    <div class="prompt">Summarise the Daily Performance sheet by plant. For each plant give: average availability %, average heat rate, total forced outage hours, average SLA compliance, and a RAG status against the Targets sheet. Flag any plant that breached the red threshold on any KPI. Format as a clean table I can paste into Power BI.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 3 · Build the trend chart <span class="tool-badge">Excel Copilot</span></div>
+    <div class="prompt">Create a chart showing daily availability % across all 6 plants for the 30-day window. Highlight any day where any plant dropped below 90%. Add a target line at 95%.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 4 · Generate the management commentary <span class="tool-badge">Excel Copilot</span></div>
+    <div class="prompt">Write a 5-bullet management commentary on the month's performance. Quantify everything. Lead with the biggest risk. End with one recommendation.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a Power BI-ready summary table, a trend chart, and a written commentary — in 5 minutes instead of 3 hours.</div>
+</div>
+</section>
+
+<!-- MAY EX 2 -->
+<section id="may-ex2">
+<div class="modulehead"><div class="num">2</div><h3>Exercise 2 · Procurement vendor evaluation → Formal minutes<small>Persona: Procurement · Corporate Secretary</small></h3></div>
+<div class="activity">
+  <div class="head">
+    <span class="persona">Procurement</span>
+    <span class="persona" style="background:#1e3a5f;border-color:#1e3a5f">CoSec</span>
+    <span class="time">⏱ 12 minutes</span>
+    <span class="file">📎 02 ContosoPower_Procurement_Meeting_Transcript.docx</span>
+  </div>
+  <h4>Teams Recap → Word: turn a vendor evaluation meeting into board-quality minutes</h4>
+  <p>Always include this workflow: Teams Recap auto-transcribes the meeting, then Word transforms the transcript into a professional meeting-minutes template — with decisions, rationale, and action items.</p>
+
+  <div class="task-step">
+    <div class="step-label">Step 1 · Open the transcript in Word <span class="tool-badge">Word Copilot</span></div>
+    Download and open <b>02 ContosoPower_Procurement_Meeting_Transcript.docx</b>. This simulates the Teams Recap output you would get from a real recorded meeting.
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 2 · Draft formal minutes <span class="tool-badge">Word Copilot</span></div>
+    <div class="prompt">Convert this transcript into formal Procurement Committee minutes. Use this structure: 1) Meeting details, 2) Attendees, 3) Subject, 4) Discussion summary (one paragraph per agenda item), 5) Decision, 6) Rationale (three bullets), 7) Action items table with owner and due date. Use neutral, third-person language. No quoted speech.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 3 · Add a risk &amp; compliance annex <span class="tool-badge">Word Copilot</span></div>
+    <div class="prompt">Add an annex at the end titled "Risk &amp; Compliance Notes". Pull every legal, financial and delivery risk mentioned in the transcript. For each: risk, mitigation as discussed, residual concern.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 4 · Generate the cover email <span class="tool-badge">Copilot Chat</span></div>
+    <div class="prompt">Draft a short, professional email from me (Aishah Rahman, Procurement Lead) to the Tender Committee Secretary, attaching these minutes, requesting tabling at the next Tender Committee meeting. Mention the RM 19.8M Sumitec recommendation and the two legal conditions.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> publishable minutes + risk annex + cover email — in 12 minutes instead of 2 days of drafting and review.</div>
+</div>
+</section>
+
+<!-- MAY EX 3 -->
+<section id="may-ex3">
+<div class="modulehead"><div class="num">3</div><h3>Exercise 3 · PMO portfolio dashboard (HTML page)<small>Persona: PMO · Cowork build</small></h3></div>
+<div class="activity">
+  <div class="head">
+    <span class="persona">PMO</span>
+    <span class="persona" style="background:#0891b2;border-color:#0891b2">Cowork</span>
+    <span class="time">⏱ 15 minutes</span>
+    <span class="file">📎 03 ContosoPower_PMO_Project_Portfolio.xlsx</span>
+  </div>
+  <h4>Delegate a multi-step task: analyse the portfolio, then build an HTML status page</h4>
+  <p>This is what Cowork is for. You describe the outcome; Cowork plans, checks in, and executes. Here we ask Cowork to read the portfolio file, identify the at-risk projects, and produce a self-contained HTML one-pager you can host or email.</p>
+
+  <div class="task-step">
+    <div class="step-label">Step 1 · Open Copilot Chat and switch to Cowork <span class="tool-badge">Cowork</span></div>
+    Upload <b>03 ContosoPower_PMO_Project_Portfolio.xlsx</b> as a working file.
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 2 · Give Cowork the full outcome <span class="tool-badge">Cowork</span></div>
+    <div class="prompt">I need a weekly PMO status one-pager. Please do the following:
+1. Read the Capital Projects sheet and identify all Red and Amber projects.
+2. For each Red project, pull the relevant milestones from the Milestones sheet.
+3. Build a single self-contained HTML file (no external dependencies) with: a header "Contoso Power · PMO Weekly Status", a RAG summary count card row, a table of Red projects with risk summary and milestone slippage, a second table of Amber projects, and a footer with the report date.
+4. Use a clean professional style — teal headers (#0E7490), white background, Inter font.
+Check in with me once before generating the HTML.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 3 · Confirm Cowork's plan, then let it produce the file</div>
+    Cowork will share a plan first. Approve it. Cowork generates the HTML, which you can save, preview in the browser, and reuse weekly.
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 4 · Iterate <span class="tool-badge">Cowork</span></div>
+    <div class="prompt">Add a sparkline column showing % complete progression for each Red project. Also add a "Next Action" column for each project — infer from the milestone data what the next action should be.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a working HTML dashboard you can rerun every Friday by just dropping the latest Excel into Cowork.</div>
+</div>
+</section>
+
+<!-- MAY EX 4 -->
+<section id="may-ex4">
+<div class="modulehead"><div class="num">4</div><h3>Exercise 4 · HR policy memo &amp; CoSec resolution drafting<small>Persona: HR · Corporate Secretary</small></h3></div>
+<div class="activity">
+  <div class="head">
+    <span class="persona">HR</span>
+    <span class="persona" style="background:#1e3a5f;border-color:#1e3a5f">CoSec</span>
+    <span class="time">⏱ 10 minutes</span>
+    <span class="file">📎 Uses Copilot Chat &amp; Word — no upload needed</span>
+  </div>
+  <h4>From blank page to first-draft policy and board resolution</h4>
+  <p>HR and Corporate Secretary spend disproportionate time getting to draft one. Copilot gets you to draft three in the time it took to write draft one.</p>
+
+  <div class="task-step">
+    <div class="step-label">HR Path — Hybrid working policy <span class="tool-badge">Word Copilot</span></div>
+    <div class="prompt">Draft a Hybrid Working Policy for Contoso Power (Malaysian IPP, ~2,000 employees). Cover: eligibility (note that plant operations roles are not eligible — explain why with operational safety language), default 3 days office / 2 days home for HQ roles, core hours 10am-4pm Malaysia time, equipment and ergonomics, manager approval flow, performance management equivalence, and a 6-month review clause. Tone: professional, clear, Malaysian English. About 600 words.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">CoSec Path — Board resolution <span class="tool-badge">Word Copilot</span></div>
+    <div class="prompt">Draft a Directors' Circular Resolution for Contoso Power Berhad approving the award of the TBE-1 Boiler Tube Replacement contract to Sumitec Energy Sdn Bhd at RM 19.8 million, subject to (a) indemnity cap revision to 100% of contract value and (b) confirmation of parent guarantee structure. Use standard Malaysian listed-company resolution format. Include preamble, the resolution itself, signing blocks for all directors, and a date line. Make it suitable for circulation by the Corporate Secretary.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a usable first draft you'd otherwise spend half a day producing — judgment calls and final wording stay yours.</div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<!-- SESSION 2 · 10 JUNE -->
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="jun-agenda">
+<div class="sessionhead">
+  <div class="num">10<br>JUN</div>
+  <h2>Session 2 · 10 June<small>Executive leaders · 1.5 hours</small></h2>
+</div>
+
+<div class="card">
+  <h3>Audience &amp; focus</h3>
+  <p class="lead">Strategic. Geared to the C-suite and shaping audiences. More slides and papers — Researcher, Analyst, Word, PowerPoint, Cowork.</p>
+  <ul>
+    <li><b>CEO</b> — strategic narrative, exec briefing pack, town-hall communications</li>
+    <li><b>Group Corporate Strategy</b> — market scans, peer moves, strategic options</li>
+    <li><b>CFO &amp; Finance</b> — peer benchmarking, valuation lenses, board financials commentary</li>
+    <li><b>Legal</b> — clause drafting, risk memos, regulatory briefs</li>
+    <li><b>Business Development</b> — partner microsites, opportunity papers</li>
+    <li><b>Group Corporate Communications</b> — press releases, investor narrative, brand-on-message drafting</li>
+  </ul>
+  <h4>Agenda</h4>
+  <div class="agenda">
+    <div>1</div><div><b>Welcome &amp; recap of where Copilot is today</b></div><div>10 min</div>
+    <div>2</div><div><b>Live demo — board paper from blank to ready</b></div><div>15 min</div>
+    <div>3</div><div><b>Hands-on exercises (one or two depending on role)</b></div><div>55 min</div>
+    <div>4</div><div><b>Discussion: where do we deploy first?</b></div><div>10 min</div>
+  </div>
+</div>
+</section>
+
+<!-- JUN EX 1 -->
+<section id="jun-ex1">
+<div class="modulehead"><div class="num">1</div><h3>Exercise 1 · ASEAN energy transition market scan<small>Persona: Strategy · BD · CEO</small></h3></div>
+<div class="activity">
+  <div class="head">
+    <span class="persona">Strategy</span>
+    <span class="persona" style="background:#1e3a5f;border-color:#1e3a5f">BD</span>
+    <span class="persona" style="background:#0891b2;border-color:#0891b2">CEO</span>
+    <span class="time">⏱ 15 minutes</span>
+    <span class="file">📎 05 ContosoPower_Market_Intelligence_Briefing.docx (reference)</span>
+  </div>
+  <h4>Researcher: full market scan with verified sources in 5 minutes</h4>
+
+  <div class="task-step">
+    <div class="step-label">Step 1 · Run Researcher (Critique mode) <span class="tool-badge">Researcher</span></div>
+    <div class="prompt">Research the ASEAN power and energy transition outlook for an IPP investor audience. Cover: (1) demand outlook for Malaysia, Singapore, Indonesia, Philippines, Thailand; (2) policy direction — Malaysia NETR, CRESS, LSS5, regional carbon pricing; (3) peer strategic moves — TNB, YTL Power, Sembcorp, AboitizPower; (4) the data centre + captive power thesis; (5) implications for an IPP shifting from baseload coal to balanced generation. Cite all sources. Use the Critique mode to verify reliability before producing the final report.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 2 · Tighten for a Board audience <span class="tool-badge">Researcher</span></div>
+    <div class="prompt">Now produce a 1-page Board version of the above. Three sections: What is happening, What it means for Contoso Power, Three strategic questions for the Board. Max 350 words.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a sourced, board-ready market scan — replaces a week of analyst work.</div>
+</div>
+</section>
+
+<!-- JUN EX 2 -->
+<section id="jun-ex2">
+<div class="modulehead"><div class="num">2</div><h3>Exercise 2 · CFO peer benchmarking &amp; commentary<small>Persona: CFO · Finance · Strategy</small></h3></div>
+<div class="activity">
+  <div class="head">
+    <span class="persona">CFO</span>
+    <span class="persona" style="background:#1e3a5f;border-color:#1e3a5f">Finance</span>
+    <span class="time">⏱ 15 minutes</span>
+    <span class="file">📎 04 ContosoPower_Financial_Performance.xlsx</span>
+  </div>
+  <h4>Analyst Agent: peer benchmarking, leverage view, board commentary</h4>
+
+  <div class="task-step">
+    <div class="step-label">Step 1 · Drop the file into Analyst <span class="tool-badge">Analyst</span></div>
+    Upload <b>04 ContosoPower_Financial_Performance.xlsx</b> to the Analyst agent.
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 2 · Peer benchmark <span class="tool-badge">Analyst</span></div>
+    <div class="prompt">Using the Peer Benchmark sheet, position Contoso Power against the listed peers on EV/EBITDA, leverage, dividend yield, and renewables capacity share. Identify where Contoso Power screens cheap, where it screens stretched, and what the market is likely pricing in. Output a short table plus a 5-bullet commentary.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 3 · Trend the Group P&amp;L <span class="tool-badge">Analyst</span></div>
+    <div class="prompt">From the Group P&amp;L sheet, calculate: EBITDA margin trend FY21-FY25, capex as % of revenue trend, and Net Debt / EBITDA progression. Highlight the 2025 inflection. Suggest two questions the Board should ask the CFO at the next meeting.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 4 · Translate for a non-financial reader <span class="tool-badge">Copilot Chat</span></div>
+    <div class="prompt">Rewrite the financial commentary above for a non-financial board member. Keep it under 200 words. Use plain English. Lead with the one number that matters most.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> peer table + trend commentary + plain-English narrative — three deliverables, one prompt chain.</div>
+</div>
+</section>
+
+<!-- JUN EX 3 -->
+<section id="jun-ex3">
+<div class="modulehead"><div class="num">3</div><h3>Exercise 3 · Board paper · Renewables JV<small>Persona: CEO · Strategy · Legal · BD</small></h3></div>
+<div class="activity">
+  <div class="head">
+    <span class="persona">CEO</span>
+    <span class="persona" style="background:#1e3a5f;border-color:#1e3a5f">Strategy</span>
+    <span class="persona" style="background:#dc2626;border-color:#dc2626">Legal</span>
+    <span class="persona" style="background:#0891b2;border-color:#0891b2">BD</span>
+    <span class="time">⏱ 15 minutes</span>
+    <span class="file">📎 05 ContosoPower_Market_Intelligence_Briefing.docx</span>
+  </div>
+  <h4>Word: from blank page to Board paper grounded on the market brief</h4>
+
+  <div class="task-step">
+    <div class="step-label">Step 1 · Open Word and reference the briefing <span class="tool-badge">Word Copilot</span></div>
+    Open <b>05 ContosoPower_Market_Intelligence_Briefing.docx</b>. Use "Reference a file" in Word Copilot.
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 2 · Draft the Board paper <span class="tool-badge">Word Copilot</span></div>
+    <div class="prompt">Draft a Board paper titled "Proposed JV — Utility-Scale Solar &amp; Battery Storage in Peninsular Malaysia". Use a standard Malaysian listed-company board-paper format: 1) Executive Summary, 2) Strategic Rationale (ground this in the market briefing), 3) Proposed Structure (50:50 JV, 500 MW solar + 200 MWh BESS, RM 1.8B total investment, 60:40 debt:equity), 4) Financial Case (8% project IRR, payback 11 years, NPV positive at 7% WACC), 5) Key Risks &amp; Mitigations (4 risks), 6) Recommendation, 7) Decisions Sought. Tone: confident, board-grade, evidence-based. Around 1,000 words.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 3 · Legal risk overlay <span class="tool-badge">Word Copilot</span></div>
+    <div class="prompt">For the Key Risks section, add a Legal-specific risk on regulatory approval under the Electricity Supply Act and the Renewable Energy Act. Suggest specific approval gates and indicative timeline.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a structured, evidence-grounded board paper — the kind that normally takes the Strategy team a week.</div>
+</div>
+</section>
+
+<!-- JUN EX 4 -->
+<section id="jun-ex4">
+<div class="modulehead"><div class="num">4</div><h3>Exercise 4 · Investor microsite &amp; press release (Cowork)<small>Persona: Comms · CEO · BD</small></h3></div>
+<div class="activity">
+  <div class="head">
+    <span class="persona">Comms</span>
+    <span class="persona" style="background:#0891b2;border-color:#0891b2">CEO</span>
+    <span class="persona" style="background:#1e3a5f;border-color:#1e3a5f">BD</span>
+    <span class="persona" style="background:#0891b2;border-color:#0891b2">Cowork</span>
+    <span class="time">⏱ 15 minutes</span>
+    <span class="file">📎 06 ContosoPower_Brand_Comms_Guidelines.docx</span>
+  </div>
+  <h4>Cowork: from board decision to press release + investor one-page microsite</h4>
+
+  <div class="task-step">
+    <div class="step-label">Step 1 · Upload brand guidelines &amp; brief Cowork <span class="tool-badge">Cowork</span></div>
+    Upload <b>06 ContosoPower_Brand_Comms_Guidelines.docx</b>. Then describe the multi-step outcome.
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 2 · Give Cowork the full job <span class="tool-badge">Cowork</span></div>
+    <div class="prompt">Contoso Power's Board has approved the 500 MW Solar + 200 MWh BESS JV announced earlier. I need you to produce three deliverables, fully aligned with the attached brand &amp; comms guidelines:
+1. A Bursa Malaysia-style announcement / press release following the structure in the guidelines (headline, subhead, dateline, body with one CEO quote, boilerplate, media contact).
+2. A single-file self-contained HTML investor one-page microsite — hero with deal headline, key figures (RM 1.8B, 500 MW, 200 MWh, 8% IRR), strategic rationale paragraph, CEO quote, key milestones timeline, About Contoso Power, contact block. Use the approved palette: Deep Teal #0E7490, Slate Navy #1E3A5F, Signal Amber #D97706. Inter font.
+3. A short LinkedIn post (under 150 words) from the CEO.
+Check in with me with your plan before producing anything.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 3 · Iterate</div>
+    Once Cowork returns the three artefacts, ask it to refine tone, swap a quote, or add a sustainability angle to the microsite. Cowork carries the brand context across all three.
+  </div>
+  <div class="callout good"><b>What you take away:</b> press release + investor microsite + LinkedIn post — three deliverables, one delegation, all brand-aligned.</div>
+</div>
+</section>
+
+<!-- FILES -->
+<section id="files">
+<div class="modulehead"><div class="num">📁</div><h3>Sample files<small>Download once · use throughout the session</small></h3></div>
+<div class="card">
+<table>
+  <tr><th>#</th><th>File</th><th>Used in</th></tr>
+  <tr><td>01</td><td><a href="samples/01%20ContosoPower_Thermal_Plant_Performance.xlsx">ContosoPower_Thermal_Plant_Performance.xlsx</a></td><td>20 May · Ex 1 (Ops)</td></tr>
+  <tr><td>02</td><td><a href="samples/02%20ContosoPower_Procurement_Meeting_Transcript.docx">ContosoPower_Procurement_Meeting_Transcript.docx</a></td><td>20 May · Ex 2 (Procurement)</td></tr>
+  <tr><td>03</td><td><a href="samples/03%20ContosoPower_PMO_Project_Portfolio.xlsx">ContosoPower_PMO_Project_Portfolio.xlsx</a></td><td>20 May · Ex 3 (PMO · Cowork)</td></tr>
+  <tr><td>04</td><td><a href="samples/04%20ContosoPower_Financial_Performance.xlsx">ContosoPower_Financial_Performance.xlsx</a></td><td>10 Jun · Ex 2 (CFO)</td></tr>
+  <tr><td>05</td><td><a href="samples/05%20ContosoPower_Market_Intelligence_Briefing.docx">ContosoPower_Market_Intelligence_Briefing.docx</a></td><td>10 Jun · Ex 1 &amp; 3 (Strategy)</td></tr>
+  <tr><td>06</td><td><a href="samples/06%20ContosoPower_Brand_Comms_Guidelines.docx">ContosoPower_Brand_Comms_Guidelines.docx</a></td><td>10 Jun · Ex 4 (Comms · Cowork)</td></tr>
+</table>
+</div>
+</section>
+
+<!-- TIPS -->
+<section id="tips">
+<div class="modulehead"><div class="num">💡</div><h3>Tips &amp; prompts<small>Get more from Copilot</small></h3></div>
+<div class="card">
+  <ul>
+    <li><b>Be specific about format.</b> "Output as a markdown table with these columns…" beats "summarise this".</li>
+    <li><b>Reference files explicitly.</b> Use "@filename" or "Reference a file" so Copilot grounds on the right document, not the web.</li>
+    <li><b>Iterate, don't restart.</b> Ask for a revision rather than re-prompting from scratch.</li>
+    <li><b>For Cowork, describe the outcome, not the steps.</b> Cowork plans the steps for you.</li>
+    <li><b>Always sanity-check numbers and named entities.</b> Copilot drafts; you verify.</li>
+  </ul>
+</div>
+</section>
+
+</main>
+</div>
+
+<script>
+const HASH='aea3b10bff93c17f5d50cb1a9282ed555f3fa3b511b1d7c2e43f011ba8112096';
+async function sha256(s){const b=new TextEncoder().encode(s);const d=await crypto.subtle.digest('SHA-256',b);return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function unlock(){
+  const v=document.getElementById('pw').value;
+  const h=await sha256(v);
+  if(h===HASH){
+    document.getElementById('lock').style.display='none';
+    document.getElementById('main').style.display='grid';
+    sessionStorage.setItem('cp_unlocked','1');
+    localStorage.setItem('cp_unlocked','1');
+  } else {
+    const e=document.getElementById('err');
+    e.textContent='Incorrect password. Please try again.';
+    setTimeout(()=>e.textContent='',3000);
+    document.getElementById('pw').value='';
+  }
+}
+if(sessionStorage.getItem('cp_unlocked')==='1'||localStorage.getItem('cp_unlocked')==='1'){
+  document.getElementById('lock').style.display='none';
+  document.getElementById('main').style.display='grid';
+}
+document.getElementById('pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlock();});
+function cp(btn){
+  const txt=btn.parentElement.textContent.replace('Copy','').replace('Copied!','').trim();
+  navigator.clipboard.writeText(txt).then(()=>{
+    btn.textContent='Copied!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copy';btn.classList.remove('copied');},2000);
+  });
+}
+</script>
+</body>
+</html>
