@@ -125,7 +125,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <a href="#jun-agenda">Agenda &amp; audience</a>
     <a href="#jun-ex1">Ex 1 · Researcher (Market)</a>
     <a href="#jun-ex2">Ex 2 · Analyst (Financials)</a>
-    <a href="#jun-ex3">Ex 3 · Board Paper</a>
+    <a href="#jun-ex3">Ex 3 · Board Paper + Deck</a>
     <a href="#jun-ex4">Ex 4 · Investor Microsite (Cowork)</a>
     <h3>Resources</h3>
     <a href="#files">Sample files</a>
@@ -172,16 +172,27 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
 <section id="tools">
 <div class="modulehead"><div class="num">🛠</div><h3>Tools Used Today<small>M365 Copilot surfaces</small></h3></div>
 <div class="card">
+<p style="margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase">In-app Copilot (inside Word, Excel, PowerPoint, Teams)</p>
 <div class="tools-grid">
   <div class="tool-card"><div class="icon">💬</div><h5>Copilot Chat (Work)</h5><p>Your starting point. Grounded on Microsoft Graph — emails, files, meetings, Teams. Ask anything across your work data.</p></div>
-  <div class="tool-card"><div class="icon">🔍</div><h5>Researcher</h5><p>Deep multi-step web + work research. "Critique" mode auto-reviews sources for reliability before producing the final report.</p></div>
   <div class="tool-card"><div class="icon">📊</div><h5>Excel Copilot</h5><p>Natural-language data analysis, KPI dashboards, RAG status tables, and Power BI-ready summaries — no formulas needed.</p></div>
   <div class="tool-card"><div class="icon">📝</div><h5>Word Copilot</h5><p>Drafting: meeting minutes, board papers, press releases, HR policies — grounded on your uploaded files.</p></div>
   <div class="tool-card"><div class="icon">🎨</div><h5>PowerPoint Copilot</h5><p>Create exec decks from a Word memo, refine storyline, generate visuals.</p></div>
-  <div class="tool-card"><div class="icon">📈</div><h5>Analyst (Agent)</h5><p>Drop in a dataset; ask complex questions — peer benchmarks, valuation, variance analysis. No setup required.</p></div>
   <div class="tool-card"><div class="icon">🤝</div><h5>Teams Recap</h5><p>Auto-transcribe meetings, surface decisions and actions, then turn the recap into formal minutes in Word.</p></div>
+</div>
+
+<p style="margin:22px 0 10px;font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase">Agents tab (inside Microsoft 365 Copilot Chat)</p>
+<div class="tools-grid">
+  <div class="tool-card"><div class="icon">🔍</div><h5>Researcher</h5><p>Deep multi-step web + work research. "Critique" mode auto-reviews sources for reliability before producing the final report.</p></div>
+  <div class="tool-card"><div class="icon">📈</div><h5>Analyst</h5><p>Drop in a dataset; ask complex questions — peer benchmarks, valuation, variance analysis. Writes and runs Python in a secure sandbox.</p></div>
+  <div class="tool-card"><div class="icon">📄</div><h5>Word agent</h5><p>The standalone Word agent in the Agents tab. Generate full Word documents — board papers, policies, briefings — from a prompt + uploaded files, without opening Word.</p></div>
+  <div class="tool-card"><div class="icon">🖼</div><h5>PowerPoint agent</h5><p>The standalone PowerPoint agent in the Agents tab. Turn a memo, Word doc, or prompt into a finished deck with images, layouts, and speaker notes.</p></div>
+  <div class="tool-card"><div class="icon">📑</div><h5>Excel agent</h5><p>The standalone Excel agent in the Agents tab. Build workbooks, models, and dashboards from a prompt or uploaded data — returns a ready-to-use .xlsx.</p></div>
   <div class="tool-card"><div class="icon">📋</div><h5>Planner agent</h5><p>The Microsoft 365 Copilot agent for Microsoft Planner. Create plans and tasks from natural language, surface at-risk work, generate weekly status updates — grounded in your actual Planner data.</p></div>
   <div class="tool-card"><div class="icon">👥</div><h5>Cowork</h5><p>Delegate multi-step tasks: "analyse the data, draft a one-pager, build an HTML status page". Cowork plans, checks in, then executes.</p></div>
+</div>
+<div class="callout" style="margin-top:14px;font-size:12px">
+  <b>How to find the agents:</b> In Microsoft 365 Copilot Chat, click the <b>Agents</b> tab in the left rail (or the agents icon at the top). Researcher, Analyst, Word agent, PowerPoint agent, Excel agent, Planner agent and Cowork all live there as separate agents — pick one per thread.
 </div>
 <div class="callout warn" style="margin-top:16px">
   <b>Data privacy reminder:</b> Do not paste real plant operational data, employee identifiable information, or commercially sensitive Contoso Power data during this session. Use the sample files provided. Microsoft 365 Copilot keeps prompts and data within your tenant boundary and is not used to train foundation models.
@@ -386,7 +397,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
         <span style="font-size:12px;font-weight:700;color:var(--ink)">Board paper · Renewables JV</span>
         <span style="margin-left:auto;font-size:10px;color:var(--muted)">CEO · Strategy · Legal · BD</span>
       </div>
-      <div style="display:grid;grid-template-columns:1fr;gap:8px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
         <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
           <div style="background:#0e7490;padding:4px 8px;display:flex;align-items:center;gap:5px">
             <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">03</span>
@@ -395,6 +406,16 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
           <div style="padding:8px;background:var(--panel2)">
             <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Board paper, grounded</p>
             <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">500 MW solar + 200 MWh BESS JV. Strategic rationale grounded in the market scan; structure, financials, four key risks (with a Legal regulatory overlay), recommendation, decisions sought.</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#1e3a5f;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">03b</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">PowerPoint agent</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Board paper → board deck</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Attach the saved board paper to the PowerPoint agent in the Agents tab. 10 slides with speaker notes, corporate theme. Word agent &amp; Excel agent also available for alternative outputs.</p>
           </div>
         </div>
       </div>
@@ -692,7 +713,18 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="step-label">Step 3 · Legal risk overlay <span class="tool-badge">Word Copilot</span></div>
     <div class="prompt">For the Key Risks section, add a Legal-specific risk on regulatory approval under the Electricity Supply Act and the Renewable Energy Act. Suggest specific approval gates and indicative timeline.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout good"><b>What you take away:</b> a structured, evidence-grounded board paper — the kind that normally takes the Strategy team a week.</div>
+  <div class="task-step">
+    <div class="step-label">Step 4 · Turn the board paper into a board deck <span class="tool-badge">PowerPoint agent</span></div>
+    Save the Word file. Then open Microsoft 365 Copilot Chat → <b>Agents</b> tab → pick the <b>PowerPoint agent</b>. Attach the saved board paper.
+    <div class="prompt">Build a 10-slide Board deck from the attached board paper "Proposed JV — Utility-Scale Solar &amp; Battery Storage in Peninsular Malaysia". Slide order: 1) Title, 2) Executive Summary, 3) Strategic Rationale, 4) Market Context (3 charts), 5) Proposed Structure, 6) Financial Case (IRR, NPV, payback), 7) Risks &amp; Mitigations, 8) Regulatory &amp; Legal Approvals, 9) Recommendation, 10) Decisions Sought. Tone: confident, board-grade. Include speaker notes for each slide. Use a clean corporate theme — deep teal and slate navy accents.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout"><b>Try next — alternative agents in the Agents tab:</b>
+    <ul style="margin:8px 0 0 18px;padding:0">
+      <li><b>Word agent</b> — instead of opening Word, ask the Word agent to produce the whole board paper from the briefing in one shot. Compare the output quality.</li>
+      <li><b>Excel agent</b> — ask it to build a clean 1-page financial summary workbook (IRR, NPV, payback, sensitivity at ±1% WACC) from the figures in your board paper. It returns a ready .xlsx.</li>
+    </ul>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a structured board paper <i>and</i> a matching board deck — produced by two different M365 Copilot agents, in under 15 minutes.</div>
 </div>
 </section>
 
