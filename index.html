@@ -191,20 +191,238 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
 
 <!-- THE STORY -->
 <section id="story">
-<div class="modulehead"><div class="num">▶</div><h3>The Story<small>One workday at Contoso Power · From plant floor to boardroom</small></h3></div>
-<div class="card">
-<p class="lead">Across the two sessions, you follow one realistic 24-hour cycle at Contoso Power — from a morning plant performance review, through a procurement decision and a PMO dashboard refresh, into an afternoon board paper on the renewables strategy, and a press release for the CEO. Eight Copilot surfaces. One workday. Board-ready by close of business.</p>
-<table>
-  <tr><th>Persona</th><th>Pain point today</th><th>With Copilot</th></tr>
-  <tr><td><b>Ops-Thermal</b></td><td>3 hours per morning building plant performance reports manually from SCADA exports</td><td>Excel + Chat: 5-minute KPI summary, RAG-coded, Power BI-ready</td></tr>
-  <tr><td><b>Procurement</b></td><td>2-day delay turning evaluation meetings into formal minutes</td><td>Teams Recap + Word: minutes drafted while you walk back to your desk</td></tr>
-  <tr><td><b>PMO</b></td><td>Friday-night dashboard refresh from 12 different project trackers</td><td>Planner agent surfaces at-risk tasks and drafts the weekly status; Cowork (optional) builds the HTML one-pager</td></tr>
-  <tr><td><b>HR / CoSec</b></td><td>Policy memos and AGM resolutions sit in drafts for a week</td><td>Word: first draft in 5 minutes, you edit the judgment calls</td></tr>
-  <tr><td><b>Strategy / BD</b></td><td>One week for a peer scan and competitive landscape</td><td>Researcher: full deck-ready brief in 25 minutes, sources verified</td></tr>
-  <tr><td><b>CFO / Finance</b></td><td>Manual peer benchmarking across 6 listed IPPs in Excel</td><td>Analyst: peer table, EV/EBITDA, leverage commentary in one prompt</td></tr>
-  <tr><td><b>Legal / Comms / CEO</b></td><td>Press release and board memo drafted from scratch, multiple review cycles</td><td>Word + PowerPoint + Cowork: board paper → press release → exec deck → microsite, all linked</td></tr>
-</table>
+<div class="modulehead"><div class="num">▶</div><h3>The Story<small>Two workdays at Contoso Power · one for each session</small></h3></div>
+
+<!-- ───────── STORY A · 20 MAY ───────── -->
+<div style="display:grid;grid-template-columns:240px 1fr;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:24px">
+  <!-- LEFT PANEL -->
+  <div style="background:linear-gradient(180deg,var(--sidebar-a),var(--sidebar-b));padding:24px 18px;display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-size:8px;letter-spacing:2px;font-weight:700;color:var(--brand);text-transform:uppercase">Session 1 · 20 May</p>
+    <h3 style="margin:0;font-size:20px;font-weight:800;color:#fff;line-height:1.2">One Tuesday<br>morning</h3>
+    <div style="margin-top:4px">
+      <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">Persona</p>
+      <p style="margin:0;font-size:12.5px;font-weight:700;color:#fff">Rajiv Menon</p>
+      <p style="margin:2px 0 0;font-size:10.5px;color:#cbd5e1">Group Chief Operating Officer<br>Contoso Power Berhad</p>
+    </div>
+    <div style="margin-top:4px">
+      <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">The Mission</p>
+      <p style="margin:0;font-size:10.5px;color:#cbd5e1;line-height:1.6">Plant briefing for the 10am exec call. Procurement Committee minutes by lunch. PMO weekly status drafted. HR policy reviewed before close of business.</p>
+    </div>
+    <div style="margin-top:4px;padding:10px;background:rgba(255,255,255,.06);border-radius:8px;border:1px solid rgba(255,255,255,.1)">
+      <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:var(--brand);text-transform:uppercase">The Punchline</p>
+      <p style="margin:0;font-size:11.5px;font-weight:700;font-style:italic;color:#fff;line-height:1.4">One morning. Five Copilot surfaces.<br>From plant floor to board minutes.</p>
+    </div>
+  </div>
+  <!-- RIGHT PANEL -->
+  <div style="background:var(--panel);padding:20px 18px 14px">
+    <h3 style="margin:0 0 14px;font-size:16px;font-weight:700;color:var(--ink)">Four moments across one morning</h3>
+
+    <!-- EX 1 -->
+    <div style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="background:#0f2545;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px">EXERCISE 1 &nbsp;·&nbsp; 15 min</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink)">Plant performance briefing</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)">Ops-Thermal · PMO</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:8px">
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#1e3a5f;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">01</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Excel Copilot</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Six plants, 30 days, one summary</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Daily SCADA export → KPI summary by plant (availability, heat rate, forced outage), RAG against targets, trend chart, Power BI-ready table, 5-bullet commentary.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EX 2 -->
+    <div style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="background:#0f2545;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px">EXERCISE 2 &nbsp;·&nbsp; 12 min</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink)">Procurement minutes</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)">Procurement · CoSec</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#8B2635;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">02</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Teams Recap</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Capture the meeting</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Vendor evaluation auto-transcribed; decisions and actions surfaced.</p>
+          </div>
+        </div>
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#0e7490;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">03</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Word Copilot</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Formal minutes</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Transcript → Procurement Committee minutes + risk annex + cover email.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EX 3 -->
+    <div style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="background:#0f2545;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px">EXERCISE 3 &nbsp;·&nbsp; 15 min</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink)">PMO weekly status</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)">PMO</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:8px">
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#7c3aed;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">04</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Planner agent</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">From spreadsheet to live plan to status</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Bootstrap a Planner plan from the capital project portfolio. Surface Red/Amber tasks. Draft the weekly status update for the Steering Committee — all grounded in real Planner data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EX 4 -->
+    <div style="margin-bottom:6px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="background:#0f2545;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px">EXERCISE 4 &nbsp;·&nbsp; 10 min</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink)">HR policy &amp; Board resolution</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)">HR · CoSec</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:8px">
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#0e7490;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">05</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Word Copilot</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">First draft in five minutes</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">HR Hybrid Working Policy (600 words) — or Directors' Circular Resolution for the Sumitec boiler tube contract award. Judgment calls stay with you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- ───────── STORY B · 10 JUNE ───────── -->
+<div style="display:grid;grid-template-columns:240px 1fr;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);margin-bottom:24px">
+  <!-- LEFT PANEL -->
+  <div style="background:linear-gradient(180deg,#7c2d12,#451a03);padding:24px 18px;display:flex;flex-direction:column;gap:12px">
+    <p style="margin:0;font-size:8px;letter-spacing:2px;font-weight:700;color:#fdba74;text-transform:uppercase">Session 2 · 10 June</p>
+    <h3 style="margin:0;font-size:20px;font-weight:800;color:#fff;line-height:1.2">One Thursday<br>afternoon</h3>
+    <div style="margin-top:4px">
+      <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:#fdba74;text-transform:uppercase">Persona</p>
+      <p style="margin:0;font-size:12.5px;font-weight:700;color:#fff">Datuk Aisyah Daud</p>
+      <p style="margin:2px 0 0;font-size:10.5px;color:#fed7aa">Group Chief Executive Officer<br>Contoso Power Berhad</p>
+    </div>
+    <div style="margin-top:4px">
+      <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:#fdba74;text-transform:uppercase">The Mission</p>
+      <p style="margin:0;font-size:10.5px;color:#fed7aa;line-height:1.6">Board meets Friday. This afternoon: build the renewables JV case from market evidence, benchmark against listed peers, draft the board paper, prepare the investor announcement for the moment the Board says yes.</p>
+    </div>
+    <div style="margin-top:4px;padding:10px;background:rgba(255,255,255,.06);border-radius:8px;border:1px solid rgba(255,255,255,.1)">
+      <p style="margin:0 0 3px;font-size:7.5px;letter-spacing:1.5px;font-weight:700;color:#fdba74;text-transform:uppercase">The Punchline</p>
+      <p style="margin:0;font-size:11.5px;font-weight:700;font-style:italic;color:#fff;line-height:1.4">One afternoon. From market scan<br>to investor announcement.</p>
+    </div>
+  </div>
+  <!-- RIGHT PANEL -->
+  <div style="background:var(--panel);padding:20px 18px 14px">
+    <h3 style="margin:0 0 14px;font-size:16px;font-weight:700;color:var(--ink)">Four moments across one afternoon</h3>
+
+    <!-- EX 1 -->
+    <div style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="background:#7c2d12;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px">EXERCISE 1 &nbsp;·&nbsp; 15 min</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink)">ASEAN market scan</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)">Strategy · BD · CEO</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:8px">
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#0e7490;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">01</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Researcher (Critique)</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Scan the landscape — sources verified</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">ASEAN power demand outlook, NETR &amp; CRESS implications, peer moves (TNB, YTL, Sembcorp, AboitizPower), data centre captive power thesis. Critique auto-reviews source reliability before producing the report.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EX 2 -->
+    <div style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="background:#7c2d12;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px">EXERCISE 2 &nbsp;·&nbsp; 15 min</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink)">Peer benchmarking</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)">CFO · Finance · Strategy</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:8px">
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#1e3a5f;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">02</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Analyst (Agent)</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Where Contoso Power screens</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">EV/EBITDA, leverage, renewables mix vs listed peers. EBITDA margin trend, capex intensity, net debt progression. Translates back to plain English for the non-financial Board reader.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EX 3 -->
+    <div style="margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="background:#7c2d12;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px">EXERCISE 3 &nbsp;·&nbsp; 15 min</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink)">Board paper · Renewables JV</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)">CEO · Strategy · Legal · BD</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:8px">
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#0e7490;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">03</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Word Copilot</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Board paper, grounded</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">500 MW solar + 200 MWh BESS JV. Strategic rationale grounded in the market scan; structure, financials, four key risks (with a Legal regulatory overlay), recommendation, decisions sought.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EX 4 -->
+    <div style="margin-bottom:6px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <span style="background:#7c2d12;color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.5px">EXERCISE 4 &nbsp;·&nbsp; 15 min</span>
+        <span style="font-size:12px;font-weight:700;color:var(--ink)">Investor pack</span>
+        <span style="margin-left:auto;font-size:10px;color:var(--muted)">Comms · CEO · BD</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr;gap:8px">
+        <div style="border:1px solid var(--border);border-radius:7px;overflow:hidden">
+          <div style="background:#D97706;padding:4px 8px;display:flex;align-items:center;gap:5px">
+            <span style="font-size:9.5px;font-weight:800;color:rgba(255,255,255,.55)">04</span>
+            <span style="font-size:7.5px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:.3px">Cowork</span>
+          </div>
+          <div style="padding:8px;background:var(--panel2)">
+            <p style="margin:0 0 2px;font-size:11px;font-weight:700;color:var(--ink)">Three brand-aligned deliverables, one delegation</p>
+            <p style="margin:0;font-size:9.5px;color:var(--muted);line-height:1.5">Brand guidelines uploaded once. Cowork produces: Bursa-style announcement, single-file HTML investor microsite, and a CEO LinkedIn post — all in approved palette and voice.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
@@ -305,17 +523,16 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
 
 <!-- MAY EX 3 -->
 <section id="may-ex3">
-<div class="modulehead"><div class="num">3</div><h3>Exercise 3 · PMO portfolio — Planner agent<small>Persona: PMO · Planner agent (+ optional Cowork)</small></h3></div>
+<div class="modulehead"><div class="num">3</div><h3>Exercise 3 · PMO portfolio — Planner agent<small>Persona: PMO · Planner agent</small></h3></div>
 <div class="activity">
   <div class="head">
     <span class="persona">PMO</span>
     <span class="persona" style="background:#7c3aed;border-color:#7c3aed">Planner agent</span>
-    <span class="persona" style="background:#0891b2;border-color:#0891b2">Cowork (optional)</span>
     <span class="time">⏱ 15 minutes</span>
     <span class="file">📎 03 ContosoPower_PMO_Project_Portfolio.xlsx</span>
   </div>
-  <h4>From a portfolio spreadsheet to a live Planner plan, weekly status, and an HTML one-pager</h4>
-  <p>The Planner agent in M365 Copilot connects directly to Microsoft Planner. You ask it to bootstrap a plan from your portfolio data, surface at-risk work, and generate the weekly status — grounded in real Planner tasks, not a static export. Cowork is the optional final step that turns it into a brandable HTML one-pager.</p>
+  <h4>From a portfolio spreadsheet to a live Planner plan, at-risk view, and weekly status</h4>
+  <p>The Planner agent in M365 Copilot connects directly to Microsoft Planner. You ask it to bootstrap a plan from your portfolio data, surface at-risk work, and generate the weekly status — grounded in real Planner tasks, not a static export.</p>
 
   <div class="callout"><b>Setup note for the facilitator:</b> participants should have access to a Planner plan (Microsoft Planner / Tasks in Teams). For the immersion we use a pre-seeded sample plan called <b>"Contoso Power — Capital Projects"</b> populated from the sample Excel. If not pre-seeded, Step 1 below creates it.</div>
 
@@ -332,11 +549,8 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="step-label">Step 3 · Draft the weekly PMO status update <span class="tool-badge">Planner agent</span></div>
     <div class="prompt">@Planner — Draft this week's PMO status update from the plan, addressed to the Project Steering Committee. Structure: headline (one sentence), RAG summary (counts), top 3 risks with mitigation owner, accomplishments this week, decisions needed next week. Tone: factual, board-grade.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="task-step">
-    <div class="step-label">Step 4 (optional) · Brand it as an HTML one-pager <span class="tool-badge">Cowork</span></div>
-    <div class="prompt">Take the PMO status update above and the Red/Amber task list from the Planner agent. Build a single self-contained HTML file (no external dependencies): a "Contoso Power · PMO Weekly Status" header, a RAG count card row, a table of Red tasks, a table of Amber tasks, the status narrative as a sidebar, and the report date in the footer. Use teal headers #0E7490, Inter font.<button class="copy" onclick="cp(this)">Copy</button></div>
-  </div>
-  <div class="callout good"><b>What you take away:</b> a real Planner plan, an at-risk task view, a board-grade weekly status — and optionally a branded HTML one-pager. Rerun every Friday with one prompt to the Planner agent.</div>
+  <div class="callout warn"><b>Note:</b> The Planner agent and Cowork are separate Microsoft 365 Copilot agents. You can't chain a Cowork step inside a Planner agent thread — switch agents if you want to do something else (e.g. produce a brand-styled HTML one-pager from the Planner output).</div>
+  <div class="callout good"><b>What you take away:</b> a real Planner plan, an at-risk task view, and a board-grade weekly status — reproducible every Friday with one prompt.</div>
 </div>
 </section>
 
