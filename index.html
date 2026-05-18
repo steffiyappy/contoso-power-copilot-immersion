@@ -119,7 +119,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <a href="#may-agenda">Agenda &amp; audience</a>
     <a href="#may-ex1">Ex 1 · Ops Performance</a>
     <a href="#may-ex2">Ex 2 · Procurement Minutes</a>
-    <a href="#may-ex3">Ex 3 · PMO Dashboard (Cowork)</a>
+    <a href="#may-ex3">Ex 3 · PMO (Planner agent)</a>
     <a href="#may-ex4">Ex 4 · HR &amp; CoSec Drafting</a>
     <h3>Session 2 · 10 June</h3>
     <a href="#jun-agenda">Agenda &amp; audience</a>
@@ -180,6 +180,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
   <div class="tool-card"><div class="icon">🎨</div><h5>PowerPoint Copilot</h5><p>Create exec decks from a Word memo, refine storyline, generate visuals.</p></div>
   <div class="tool-card"><div class="icon">📈</div><h5>Analyst (Agent)</h5><p>Drop in a dataset; ask complex questions — peer benchmarks, valuation, variance analysis. No setup required.</p></div>
   <div class="tool-card"><div class="icon">🤝</div><h5>Teams Recap</h5><p>Auto-transcribe meetings, surface decisions and actions, then turn the recap into formal minutes in Word.</p></div>
+  <div class="tool-card"><div class="icon">📋</div><h5>Planner agent</h5><p>The Microsoft 365 Copilot agent for Microsoft Planner. Create plans and tasks from natural language, surface at-risk work, generate weekly status updates — grounded in your actual Planner data.</p></div>
   <div class="tool-card"><div class="icon">👥</div><h5>Cowork</h5><p>Delegate multi-step tasks: "analyse the data, draft a one-pager, build an HTML status page". Cowork plans, checks in, then executes.</p></div>
 </div>
 <div class="callout warn" style="margin-top:16px">
@@ -197,7 +198,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
   <tr><th>Persona</th><th>Pain point today</th><th>With Copilot</th></tr>
   <tr><td><b>Ops-Thermal</b></td><td>3 hours per morning building plant performance reports manually from SCADA exports</td><td>Excel + Chat: 5-minute KPI summary, RAG-coded, Power BI-ready</td></tr>
   <tr><td><b>Procurement</b></td><td>2-day delay turning evaluation meetings into formal minutes</td><td>Teams Recap + Word: minutes drafted while you walk back to your desk</td></tr>
-  <tr><td><b>PMO</b></td><td>Friday-night dashboard refresh from 12 different project trackers</td><td>Cowork builds an HTML status page from the master tracker — repeatable weekly</td></tr>
+  <tr><td><b>PMO</b></td><td>Friday-night dashboard refresh from 12 different project trackers</td><td>Planner agent surfaces at-risk tasks and drafts the weekly status; Cowork (optional) builds the HTML one-pager</td></tr>
   <tr><td><b>HR / CoSec</b></td><td>Policy memos and AGM resolutions sit in drafts for a week</td><td>Word: first draft in 5 minutes, you edit the judgment calls</td></tr>
   <tr><td><b>Strategy / BD</b></td><td>One week for a peer scan and competitive landscape</td><td>Researcher: full deck-ready brief in 25 minutes, sources verified</td></tr>
   <tr><td><b>CFO / Finance</b></td><td>Manual peer benchmarking across 6 listed IPPs in Excel</td><td>Analyst: peer table, EV/EBITDA, leverage commentary in one prompt</td></tr>
@@ -304,39 +305,38 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
 
 <!-- MAY EX 3 -->
 <section id="may-ex3">
-<div class="modulehead"><div class="num">3</div><h3>Exercise 3 · PMO portfolio dashboard (HTML page)<small>Persona: PMO · Cowork build</small></h3></div>
+<div class="modulehead"><div class="num">3</div><h3>Exercise 3 · PMO portfolio — Planner agent<small>Persona: PMO · Planner agent (+ optional Cowork)</small></h3></div>
 <div class="activity">
   <div class="head">
     <span class="persona">PMO</span>
-    <span class="persona" style="background:#0891b2;border-color:#0891b2">Cowork</span>
+    <span class="persona" style="background:#7c3aed;border-color:#7c3aed">Planner agent</span>
+    <span class="persona" style="background:#0891b2;border-color:#0891b2">Cowork (optional)</span>
     <span class="time">⏱ 15 minutes</span>
     <span class="file">📎 03 ContosoPower_PMO_Project_Portfolio.xlsx</span>
   </div>
-  <h4>Delegate a multi-step task: analyse the portfolio, then build an HTML status page</h4>
-  <p>This is what Cowork is for. You describe the outcome; Cowork plans, checks in, and executes. Here we ask Cowork to read the portfolio file, identify the at-risk projects, and produce a self-contained HTML one-pager you can host or email.</p>
+  <h4>From a portfolio spreadsheet to a live Planner plan, weekly status, and an HTML one-pager</h4>
+  <p>The Planner agent in M365 Copilot connects directly to Microsoft Planner. You ask it to bootstrap a plan from your portfolio data, surface at-risk work, and generate the weekly status — grounded in real Planner tasks, not a static export. Cowork is the optional final step that turns it into a brandable HTML one-pager.</p>
+
+  <div class="callout"><b>Setup note for the facilitator:</b> participants should have access to a Planner plan (Microsoft Planner / Tasks in Teams). For the immersion we use a pre-seeded sample plan called <b>"Contoso Power — Capital Projects"</b> populated from the sample Excel. If not pre-seeded, Step 1 below creates it.</div>
 
   <div class="task-step">
-    <div class="step-label">Step 1 · Open Copilot Chat and switch to Cowork <span class="tool-badge">Cowork</span></div>
-    Upload <b>03 ContosoPower_PMO_Project_Portfolio.xlsx</b> as a working file.
+    <div class="step-label">Step 1 · Bootstrap a Planner plan from the portfolio <span class="tool-badge">Planner agent</span></div>
+    Open Microsoft 365 Copilot Chat, mention <b>@Planner</b>, and upload <b>03 ContosoPower_PMO_Project_Portfolio.xlsx</b>.
+    <div class="prompt">@Planner — Create a new plan called "Contoso Power — Capital Projects". For each row in the Capital Projects sheet, create a task with the Project ID and Project Name as the task title, the Project Name as the description, the Target Completion as the due date, and a label for the RAG status (Green/Amber/Red). Group tasks into buckets by Sponsor BU. Confirm the plan before creating.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
   <div class="task-step">
-    <div class="step-label">Step 2 · Give Cowork the full outcome <span class="tool-badge">Cowork</span></div>
-    <div class="prompt">I need a weekly PMO status one-pager. Please do the following:
-1. Read the Capital Projects sheet and identify all Red and Amber projects.
-2. For each Red project, pull the relevant milestones from the Milestones sheet.
-3. Build a single self-contained HTML file (no external dependencies) with: a header "Contoso Power · PMO Weekly Status", a RAG summary count card row, a table of Red projects with risk summary and milestone slippage, a second table of Amber projects, and a footer with the report date.
-4. Use a clean professional style — teal headers (#0E7490), white background, Inter font.
-Check in with me once before generating the HTML.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <div class="step-label">Step 2 · Surface what needs attention <span class="tool-badge">Planner agent</span></div>
+    <div class="prompt">@Planner — In the "Contoso Power — Capital Projects" plan, show me every task labelled Red or Amber. For each, give me the bucket, the due date, and how many days until due. Highlight any task already past its due date. Suggest which three need executive attention this week and why.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
   <div class="task-step">
-    <div class="step-label">Step 3 · Confirm Cowork's plan, then let it produce the file</div>
-    Cowork will share a plan first. Approve it. Cowork generates the HTML, which you can save, preview in the browser, and reuse weekly.
+    <div class="step-label">Step 3 · Draft the weekly PMO status update <span class="tool-badge">Planner agent</span></div>
+    <div class="prompt">@Planner — Draft this week's PMO status update from the plan, addressed to the Project Steering Committee. Structure: headline (one sentence), RAG summary (counts), top 3 risks with mitigation owner, accomplishments this week, decisions needed next week. Tone: factual, board-grade.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
   <div class="task-step">
-    <div class="step-label">Step 4 · Iterate <span class="tool-badge">Cowork</span></div>
-    <div class="prompt">Add a sparkline column showing % complete progression for each Red project. Also add a "Next Action" column for each project — infer from the milestone data what the next action should be.<button class="copy" onclick="cp(this)">Copy</button></div>
+    <div class="step-label">Step 4 (optional) · Brand it as an HTML one-pager <span class="tool-badge">Cowork</span></div>
+    <div class="prompt">Take the PMO status update above and the Red/Amber task list from the Planner agent. Build a single self-contained HTML file (no external dependencies): a "Contoso Power · PMO Weekly Status" header, a RAG count card row, a table of Red tasks, a table of Amber tasks, the status narrative as a sidebar, and the report date in the footer. Use teal headers #0E7490, Inter font.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout good"><b>What you take away:</b> a working HTML dashboard you can rerun every Friday by just dropping the latest Excel into Cowork.</div>
+  <div class="callout good"><b>What you take away:</b> a real Planner plan, an at-risk task view, a board-grade weekly status — and optionally a branded HTML one-pager. Rerun every Friday with one prompt to the Planner agent.</div>
 </div>
 </section>
 
