@@ -476,7 +476,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
 
 <div class="card">
   <h3>Audience &amp; focus</h3>
-  <p class="lead">Practical, hands-on. Geared to operational decision-makers who run plants, projects, vendors, people and governance.</p>
+  <p class="lead">Practical, hands-on. Geared to operational decision-makers who run plants, projects, vendors, people and governance. This session covers <b>all</b> M365 Copilot surfaces — in-app Copilot (Word, Excel, PowerPoint, Teams Recap), Copilot Chat, the Agents tab (Researcher, Analyst, Word agent, PowerPoint agent, Excel agent, Planner agent, Cowork).</p>
   <ul>
     <li><b>Head of HR</b> — drafting, policy generation, employee comms</li>
     <li><b>Head of Project Management Service (PMO)</b> — portfolio dashboards, status reporting</li>
@@ -524,7 +524,22 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="step-label">Step 4 · Generate the management commentary <span class="tool-badge">Excel Copilot</span></div>
     <div class="prompt">Write a 5-bullet management commentary on the month's performance. Quantify everything. Lead with the biggest risk. End with one recommendation.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout good"><b>What you take away:</b> a Power BI-ready summary table, a trend chart, and a written commentary — in 5 minutes instead of 3 hours.</div>
+  <div class="task-step">
+    <div class="step-label">Step 5 · Same data, deeper questions <span class="tool-badge">Analyst</span></div>
+    Open Microsoft 365 Copilot Chat → <b>Agents</b> tab → <b>Analyst</b>. Upload the same xlsx.
+    <div class="prompt">Compare the 6 thermal plants head-to-head: which plant gives the best availability-to-heat-rate trade-off? Which plant has the most variable performance day-to-day (use coefficient of variation)? Run a quick correlation between forced outage hours and SLA compliance. Output a ranking table plus a 3-bullet investment-prioritisation view.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 6 · Build a fleet rollup workbook from a prompt <span class="tool-badge">Excel agent</span></div>
+    In Copilot Chat → <b>Agents</b> tab → <b>Excel agent</b> (standalone — generates a new .xlsx, no Excel open).
+    <div class="prompt">Generate a single-sheet Fleet Operations Rollup workbook for Contoso Power's 6 thermal plants. Columns: Plant ID, Capacity (MW), MTD Availability %, MTD Heat Rate (kJ/kWh), Forced Outage Hours, SLA Compliance %, RAG. Add a totals/weighted-average row. Include conditional formatting (Green ≥95%, Amber 90–94%, Red &lt;90% on Availability). Add a 2nd hidden sheet with assumptions. Make it ready to share to the COO. Output the .xlsx.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 7 · Turn the summary into an Ops Review deck <span class="tool-badge">PowerPoint Copilot</span></div>
+    Open a blank PowerPoint, open the in-app Copilot pane.
+    <div class="prompt">Create a 5-slide Operations Review deck from my Excel summary: 1) Title — "Thermal Fleet Operations Review · 30-day", 2) Fleet KPI snapshot, 3) Best vs worst performer, 4) Top 3 risks &amp; mitigations, 5) Decisions sought from COO. Clean corporate look, navy accents. Add speaker notes.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a Power BI-ready summary, a trend chart, a written commentary, an Analyst deep-dive, a fleet rollup workbook <i>and</i> a 5-slide Ops Review deck — all from the same starting file.</div>
 </div>
 </section>
 
@@ -557,7 +572,18 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="step-label">Step 4 · Generate the cover email <span class="tool-badge">Copilot Chat</span></div>
     <div class="prompt">Draft a short, professional email from me (Aishah Rahman, Procurement Lead) to the Tender Committee Secretary, attaching these minutes, requesting tabling at the next Tender Committee meeting. Mention the RM 19.8M Sumitec recommendation and the two legal conditions.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout good"><b>What you take away:</b> publishable minutes + risk annex + cover email — in 12 minutes instead of 2 days of drafting and review.</div>
+  <div class="task-step">
+    <div class="step-label">Step 5 · Same minutes, standalone agent <span class="tool-badge">Word agent</span></div>
+    Copilot Chat → <b>Agents</b> tab → <b>Word agent</b>. Attach <b>02 ContosoPower_Procurement_Meeting_Transcript.txt</b>.
+    <div class="prompt">Generate formal Procurement Committee minutes as a Word document from the attached transcript. Structure: meeting details, attendees, subject, discussion summary (one paragraph per agenda item), decision, rationale (3 bullets), action items table. Neutral third-person language. Output the .docx.<button class="copy" onclick="cp(this)">Copy</button></div>
+    Compare the Word Copilot (Step 2, in-app edit mode) vs Word agent (this step, standalone) output.
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 6 · Pre-award vendor reputation check <span class="tool-badge">Researcher</span></div>
+    Copilot Chat → <b>Agents</b> tab → <b>Researcher</b>.
+    <div class="prompt">Research the three shortlisted vendors — Sumitec Energy, TKM Power Services, and Indkom Industries — for a Malaysian IPP boiler tube replacement contract. For each: ownership, recent contracts in ASEAN power, financial signals from public filings, any litigation, ESG/safety incidents. Use Critique mode to flag any unverified claim. Output a 1-page comparison.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> publishable minutes (two ways) + risk annex + cover email + a sourced vendor due-diligence brief.</div>
 </div>
 </section>
 
@@ -589,8 +615,13 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="step-label">Step 3 · Draft the weekly PMO status update <span class="tool-badge">Planner agent</span></div>
     <div class="prompt">@Planner — Draft this week's PMO status update from the plan, addressed to the Project Steering Committee. Structure: headline (one sentence), RAG summary (counts), top 3 risks with mitigation owner, accomplishments this week, decisions needed next week. Tone: factual, board-grade.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
+  <div class="task-step">
+    <div class="step-label">Step 4 · Turn the status into a PMO Review deck <span class="tool-badge">PowerPoint agent</span></div>
+    In a new Copilot Chat thread → <b>Agents</b> tab → <b>PowerPoint agent</b>. Paste the weekly status from Step 3.
+    <div class="prompt">Build a 6-slide PMO Weekly Review deck from the pasted status: 1) Title, 2) Portfolio RAG snapshot, 3) Top 3 at-risk projects with mitigation owners, 4) Accomplishments this week, 5) Decisions needed next week, 6) Forward calendar (next 4 weeks). Corporate look, navy/teal accents. Add speaker notes.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
   <div class="callout warn"><b>Note:</b> The Planner agent and Cowork are separate Microsoft 365 Copilot agents. You can't chain a Cowork step inside a Planner agent thread — switch agents if you want to do something else (e.g. produce a brand-styled HTML one-pager from the Planner output).</div>
-  <div class="callout good"><b>What you take away:</b> a real Planner plan, an at-risk task view, and a board-grade weekly status — reproducible every Friday with one prompt.</div>
+  <div class="callout good"><b>What you take away:</b> a real Planner plan, an at-risk task view, a board-grade weekly status <i>and</i> a 6-slide PMO Review deck — reproducible every Friday with three prompts.</div>
 </div>
 </section>
 
@@ -615,7 +646,12 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="step-label">CoSec Path — Board resolution <span class="tool-badge">Word Copilot</span></div>
     <div class="prompt">Draft a Directors' Circular Resolution for Contoso Power Berhad approving the award of the TBE-1 Boiler Tube Replacement contract to Sumitec Energy Sdn Bhd at RM 19.8 million, subject to (a) indemnity cap revision to 100% of contract value and (b) confirmation of parent guarantee structure. Use standard Malaysian listed-company resolution format. Include preamble, the resolution itself, signing blocks for all directors, and a date line. Make it suitable for circulation by the Corporate Secretary.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout good"><b>What you take away:</b> a usable first draft you'd otherwise spend half a day producing — judgment calls and final wording stay yours.</div>
+  <div class="task-step">
+    <div class="step-label">Step 3 · Build an HR self-service portal (HTML) <span class="tool-badge">Cowork</span></div>
+    Copilot Chat → <b>Agents</b> tab → <b>Cowork</b>. Attach the policy from the HR Path above.
+    <div class="prompt">Build a single self-contained .html HR self-service portal for Contoso Power employees. Include: (a) hero with a friendly welcome and search box (non-functional placeholder is fine); (b) policy cards grid — Hybrid Working, Leave, Claims, Code of Conduct, Whistleblowing, Performance Review (each card shows title, 1-line description, "Read more" button); (c) "My quick links" panel — payslip, leave balance, claim a new expense, raise a ticket; (d) "FAQ" accordion with 6 common HR questions answered using my attached policy as the source; (e) contact HR block with phone, email, HQ address. Inline CSS, responsive at mobile + desktop, navy (#1E3A5F) and teal (#0E7490) accents. Must open in a browser by double-clicking.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> hybrid working policy, board resolution <i>and</i> a working HR self-service portal — all from a few prompts.</div>
 </div>
 </section>
 
@@ -630,7 +666,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
 
 <div class="card">
   <h3>Audience &amp; focus</h3>
-  <p class="lead">Strategic. Geared to the C-suite and shaping audiences. More slides and papers — Researcher, Analyst, Word, PowerPoint, Cowork.</p>
+  <p class="lead">Strategic. Geared to the C-suite and shaping audiences. This session also covers <b>all</b> M365 Copilot surfaces — in-app Copilot (Word, Excel, PowerPoint, Teams Recap), Copilot Chat, the Agents tab (Researcher, Analyst, Word agent, PowerPoint agent, Excel agent, Planner agent, Cowork).</p>
   <ul>
     <li><b>CEO</b> — strategic narrative, exec briefing pack, town-hall communications</li>
     <li><b>Group Corporate Strategy</b> — market scans, peer moves, strategic options</li>
@@ -670,7 +706,12 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="step-label">Step 2 · Tighten for a Board audience <span class="tool-badge">Researcher</span></div>
     <div class="prompt">Now produce a 1-page Board version of the above. Three sections: What is happening, What it means for Contoso Power, Three strategic questions for the Board. Max 350 words.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout good"><b>What you take away:</b> a sourced, board-ready market scan — replaces a week of analyst work.</div>
+  <div class="task-step">
+    <div class="step-label">Step 3 · Turn the scan into a market-context table <span class="tool-badge">Excel Copilot</span></div>
+    Open <b>04 ContosoPower_Financial_Performance.xlsx</b>. Open Copilot pane.
+    <div class="prompt">From the Peer Benchmark sheet, build a new "Market Context" table cross-referencing each peer's EV/EBITDA and renewables capacity share against the ASEAN demand-outlook themes I will paste below. Add a column for "Strategic posture" (Defensive / Balanced / Transition leader). Then create a scatter chart: EV/EBITDA on x-axis, renewables share on y-axis, peer name as labels. Highlight Contoso Power's position.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a sourced board-ready market scan + a quantified market-context table tying the scan to peer financials.</div>
 </div>
 </section>
 
@@ -702,7 +743,17 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="step-label">Step 4 · Translate for a non-financial reader <span class="tool-badge">Copilot Chat</span></div>
     <div class="prompt">Rewrite the financial commentary above for a non-financial board member. Keep it under 200 words. Use plain English. Lead with the one number that matters most.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout good"><b>What you take away:</b> peer table + trend commentary + plain-English narrative — three deliverables, one prompt chain.</div>
+  <div class="task-step">
+    <div class="step-label">Step 5 · Turn the CFO pre-board call into formal notes <span class="tool-badge">Teams Recap</span> <span class="tool-badge">Word Copilot</span></div>
+    Imagine the CFO held a pre-board call with Finance and Strategy this morning. In Teams Recap, ask Copilot for the recap. Copy the recap into Word, open Copilot pane.
+    <div class="prompt">Convert this Teams Recap into formal CFO Pre-Board Notes. Structure: meeting details, attendees, key financial themes discussed, decisions taken, open questions for the Board, action items table (owner, due date). Third-person neutral language. Add a 3-bullet executive summary at the top.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="task-step">
+    <div class="step-label">Step 6 · Track every board question raised <span class="tool-badge">Planner agent</span></div>
+    Copilot Chat → mention <b>@Planner</b>.
+    <div class="prompt">@Planner — Create a new plan called "CFO · Board Q&amp;A Tracker". Add one task per board question raised in the pre-board notes (paste them in). For each task: assign owner from the notes, set due date to the day before the next Board meeting, group into buckets — "Financials", "Risk", "Strategy", "Governance". Confirm before creating.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> peer table + trend commentary + plain-English narrative + formal pre-board notes + a live board-question tracker — five deliverables, one workbook.</div>
 </div>
 </section>
 
@@ -749,7 +800,12 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     Compare: Word Copilot (Steps 1-3, in-app edit mode) vs Word agent (this step, standalone) — same deliverable, two different entry points.
   </div>
   <div class="callout warn"><b>Don't confuse the two:</b> <i>Word/Excel/PowerPoint Copilot</i> lives <b>inside</b> the app (edit mode — you open Word, Excel, or PowerPoint first). <i>Word agent, Excel agent, PowerPoint agent</i> are <b>standalone agents</b> in the <b>Agents tab</b> of Microsoft 365 Copilot Chat — they generate a finished file from a prompt without you opening the app at all.</div>
-  <div class="callout good"><b>What you take away:</b> a board paper, a matching board deck, and a financial summary workbook — produced by three different M365 Copilot agents in the Agents tab, in under 20 minutes.</div>
+  <div class="task-step">
+    <div class="step-label">Step 7 · Refine the deck in-app <span class="tool-badge">PowerPoint Copilot</span></div>
+    Open the deck the PowerPoint agent produced. Open the Copilot pane in PowerPoint.
+    <div class="prompt">Refine slide 6 (Financial Case) — replace the bullets with a comparison visual (Project IRR vs Group WACC) and tighten the speaker notes to under 60 words. Then check slide 1-10 for any inconsistency in the figures (RM 1.8B, 500 MW, 200 MWh, 8% IRR). Suggest 3 places where adding a chart would strengthen the board narrative.<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
+  <div class="callout good"><b>What you take away:</b> a board paper, a matching board deck (refined in-app), and a financial summary workbook — produced by Word Copilot, PowerPoint agent, Excel agent, Word agent <i>and</i> PowerPoint Copilot, in under 20 minutes.</div>
 </div>
 </section>
 
