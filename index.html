@@ -126,7 +126,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <a href="#jun-agenda">Agenda &amp; audience</a>
     <a href="#jun-ex1">Ex 1 · Researcher (Market)</a>
     <a href="#jun-ex2">Ex 2 · Analyst (Financials)</a>
-    <a href="#jun-ex3">Ex 3 · Board Paper + Deck</a>
+    <a href="#jun-ex3">Ex 3 · Paper · Deck · Workbook</a>
     <a href="#jun-ex4">Ex 4 · Investor Microsite (Cowork)</a>
     <h3>Resources</h3>
     <a href="#tips">Tips &amp; prompts</a>
@@ -707,7 +707,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
 
 <!-- JUN EX 3 -->
 <section id="jun-ex3">
-<div class="modulehead"><div class="num">3</div><h3>Exercise 3 · Board paper · Renewables JV<small>Persona: CEO · Strategy · Legal · BD</small></h3></div>
+<div class="modulehead"><div class="num">3</div><h3>Exercise 3 · Board paper · deck · financial summary<small>Persona: CEO · Strategy · Legal · BD · CFO</small></h3></div>
 <div class="activity">
   <div class="head">
     <span class="persona">CEO</span>
@@ -732,17 +732,23 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="prompt">For the Key Risks section, add a Legal-specific risk on regulatory approval under the Electricity Supply Act and the Renewable Energy Act. Suggest specific approval gates and indicative timeline.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
   <div class="task-step">
-    <div class="step-label">Step 4 · Turn the board paper into a board deck <span class="tool-badge">PowerPoint agent</span></div>
-    Save the Word file. Then open Microsoft 365 Copilot Chat → <b>Agents</b> tab → pick the <b>PowerPoint agent</b>. Attach the saved board paper.
+    <div class="step-label">Step 4 · Board paper → board deck <span class="tool-badge">PowerPoint agent</span></div>
+    Save the Word file. Open Microsoft 365 Copilot Chat → <b>Agents</b> tab → pick the <b>PowerPoint agent</b> (this is the standalone agent, <i>not</i> in-app PowerPoint Copilot). Attach the saved board paper.
     <div class="prompt">Build a 10-slide Board deck from the attached board paper "Proposed JV — Utility-Scale Solar &amp; Battery Storage in Peninsular Malaysia". Slide order: 1) Title, 2) Executive Summary, 3) Strategic Rationale, 4) Market Context (3 charts), 5) Proposed Structure, 6) Financial Case (IRR, NPV, payback), 7) Risks &amp; Mitigations, 8) Regulatory &amp; Legal Approvals, 9) Recommendation, 10) Decisions Sought. Tone: confident, board-grade. Include speaker notes for each slide. Use a clean corporate theme — deep teal and slate navy accents.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout"><b>Try next — alternative agents in the Agents tab:</b>
-    <ul style="margin:8px 0 0 18px;padding:0">
-      <li><b>Word agent</b> — instead of opening Word, ask the Word agent to produce the whole board paper from the briefing in one shot. Compare the output quality.</li>
-      <li><b>Excel agent</b> — ask it to build a clean 1-page financial summary workbook (IRR, NPV, payback, sensitivity at ±1% WACC) from the figures in your board paper. It returns a ready .xlsx.</li>
-    </ul>
+  <div class="task-step">
+    <div class="step-label">Step 5 · Financial summary workbook <span class="tool-badge">Excel agent</span></div>
+    Still in Copilot Chat → <b>Agents</b> tab → pick the <b>Excel agent</b> (standalone agent — generates a new .xlsx file from a prompt, no Excel open required).
+    <div class="prompt">Build a single-sheet financial summary workbook for the proposed Contoso Power renewables JV (500 MW solar + 200 MWh BESS, RM 1.8B total investment, 60:40 debt:equity, 8% project IRR, payback 11 years, NPV positive at 7% WACC). Include: (1) Deal Summary box, (2) Sources &amp; Uses table, (3) 10-year cash flow projection, (4) WACC sensitivity table (±1% and ±2%), (5) Key ratios (IRR, NPV, DSCR, debt:equity). Format clean and board-ready, navy header row, conditional formatting on the sensitivity table. Output the .xlsx.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
-  <div class="callout good"><b>What you take away:</b> a structured board paper <i>and</i> a matching board deck — produced by two different M365 Copilot agents, in under 15 minutes.</div>
+  <div class="task-step">
+    <div class="step-label">Step 6 · One-shot board paper · alternative path <span class="tool-badge">Word agent</span></div>
+    Open a fresh Copilot Chat thread → <b>Agents</b> tab → pick the <b>Word agent</b> (standalone — produces a .docx without opening Word). Attach <b>05 ContosoPower_Market_Intelligence_Briefing.docx</b>.
+    <div class="prompt">Generate the full Board paper as a Word document — "Proposed JV — Utility-Scale Solar &amp; Battery Storage in Peninsular Malaysia". Use Malaysian listed-company board-paper structure: Executive Summary, Strategic Rationale (ground in the attached market brief), Proposed Structure (50:50 JV, 500 MW solar + 200 MWh BESS, RM 1.8B, 60:40 debt:equity), Financial Case (8% IRR, 11-year payback, NPV positive at 7% WACC), Key Risks &amp; Mitigations (incl. regulatory under the Electricity Supply Act &amp; Renewable Energy Act), Recommendation, Decisions Sought. ~1,000 words. Output the .docx.<button class="copy" onclick="cp(this)">Copy</button></div>
+    Compare: Word Copilot (Steps 1-3, in-app edit mode) vs Word agent (this step, standalone) — same deliverable, two different entry points.
+  </div>
+  <div class="callout warn"><b>Don't confuse the two:</b> <i>Word/Excel/PowerPoint Copilot</i> lives <b>inside</b> the app (edit mode — you open Word, Excel, or PowerPoint first). <i>Word agent, Excel agent, PowerPoint agent</i> are <b>standalone agents</b> in the <b>Agents tab</b> of Microsoft 365 Copilot Chat — they generate a finished file from a prompt without you opening the app at all.</div>
+  <div class="callout good"><b>What you take away:</b> a board paper, a matching board deck, and a financial summary workbook — produced by three different M365 Copilot agents in the Agents tab, in under 20 minutes.</div>
 </div>
 </section>
 
