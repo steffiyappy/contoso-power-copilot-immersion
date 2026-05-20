@@ -585,7 +585,7 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
   <div class="head">
     <span class="persona">PMO</span>
     <span class="persona" style="background:#7c3aed;border-color:#7c3aed">Planner agent</span>
-    <span class="time">⏱ 20 minutes · 3 core + 1 stretch step</span>
+    <span class="time">⏱ 22 minutes · 3 core + 2 stretch steps</span>
     <span class="file">📎 03 ContosoPower_PMO_Project_Portfolio.xlsx</span>
   </div>
   <h4>From a portfolio spreadsheet to a live Planner plan, at-risk view, and weekly status</h4>
@@ -607,17 +607,22 @@ td a{color:var(--ink);font-weight:600}td a:hover{color:var(--accent2)}
     <div class="prompt">@Planner - Draft this week's PMO status update from the plan, addressed to the Project Steering Committee. Structure: headline (one sentence), RAG summary (counts), top 3 risks with mitigation owner, accomplishments this week, decisions needed next week. Tone: factual, board-grade.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
   <details class="stretch-toggle">
-  <summary>✨ STRETCH steps <span class="stretch-count">1 extra step · click to expand</span></summary>
+  <summary>✨ STRETCH steps <span class="stretch-count">2 extra steps · click to expand</span></summary>
   <div class="stretch-body">
   <div class="task-step">
     <div class="step-label">✨ STRETCH · Step 4 · Turn the status into a PMO Review deck <span class="tool-badge">PowerPoint agent</span></div>
     In a new Copilot Chat thread → <b>Agents</b> tab → <b>PowerPoint agent</b>. Paste the weekly status from Step 3.
     <div class="prompt">Build a 6-slide PMO Weekly Review deck from the pasted status: 1) Title, 2) Portfolio RAG snapshot, 3) Top 3 at-risk projects with mitigation owners, 4) Accomplishments this week, 5) Decisions needed next week, 6) Forward calendar (next 4 weeks). Corporate look, navy/teal accents. Add speaker notes.<button class="copy" onclick="cp(this)">Copy</button></div>
   </div>
+  <div class="task-step">
+    <div class="step-label">✨ STRETCH · Step 5 · Build a slice-and-dice PMO portfolio dashboard (HTML) <span class="tool-badge">Cowork</span></div>
+    In a new Copilot Chat thread → <b>Agents</b> tab → <b>Cowork</b>. Attach <b>03 ContosoPower_PMO_Project_Portfolio.xlsx</b>.
+    <div class="prompt">Build a single self-contained .html PMO Portfolio Dashboard for Contoso Power using the attached Excel as the data source. Layout: (a) top KPI strip - total projects, total approved capex (RM m), spend-to-date (RM m and % of capex), count Red, count Amber, count Green, % on-time; (b) filter bar (works with vanilla JS) - filter by Sponsor BU, RAG status, Phase, Project Manager, with a "Reset" button; selecting a filter must update every chart and the table below; (c) charts (use Chart.js via CDN) - donut of RAG mix, horizontal bar of capex by Sponsor BU, stacked bar of phase distribution, line of cumulative spend vs cumulative budget by month; (d) sortable, searchable projects table with all key columns and a RAG badge (Green #16a34a, Amber #f59e0b, Red #dc2626); clicking a row opens a side drawer showing the project detail (sponsor, PM, capex, spend, % complete, milestones if available, top risk); (e) "Top 5 at-risk" panel auto-derived from Red + days-overdue. Style: dark navy header (#1E3A5F), teal accents (#0E7490), Inter/Segoe UI font, responsive grid that collapses cleanly to a phone width. Must open by double-clicking the .html file - no server, no build step. Title it "Contoso Power · PMO Portfolio Dashboard".<button class="copy" onclick="cp(this)">Copy</button></div>
+  </div>
   </div>
   </details>
-  <div class="callout warn"><b>Note:</b> The Planner agent and Cowork are separate Microsoft 365 Copilot agents. You can't chain a Cowork step inside a Planner agent thread - switch agents if you want to do something else (e.g. produce a brand-styled HTML one-pager from the Planner output).</div>
-  <div class="callout good"><b>What you take away:</b> a real Planner plan, an at-risk task view, a board-grade weekly status <i>and</i> a 6-slide PMO Review deck - reproducible every Friday with three prompts.</div>
+  <div class="callout warn"><b>Note:</b> The Planner agent and Cowork are separate Microsoft 365 Copilot agents. You can't chain Cowork inside a Planner agent thread - open a fresh thread and switch to Cowork for Step 5.</div>
+  <div class="callout good"><b>What you take away:</b> a real Planner plan, an at-risk task view, a board-grade weekly status, a 6-slide PMO Review deck <i>and</i> a slice-and-dice HTML portfolio dashboard you can refresh every week with one prompt.</div>
 </div>
 </section>
 
